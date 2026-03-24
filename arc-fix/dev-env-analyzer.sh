@@ -64,10 +64,6 @@ check_version_manager() {
         else
             echo -e "    ${YELLOW}⚠${NC} $root_var not set in current shell"
         fi
-        if [[ "$tool_dir" != "$HOME/code/"* ]]; then
-            echo -e "    ${YELLOW}⚠${NC} Could be moved to $target"
-            RECOMMENDATIONS+=("$tool_dir|$target|$env_export")
-        fi
     fi
 }
 
@@ -81,14 +77,11 @@ if [ -d "$HOME/code/go" ]; then
     fi
     if [ -n "$GOPATH" ]; then
         echo "    - GOPATH is set to: $GOPATH"
+        SIZE=$(get_dir_size "$GOPATH")
+        echo "cache and binaries size: ($SIZE)"
     else
         echo -e "    ${YELLOW}⚠${NC} GOPATH is not set in current shell"
     fi
-elif [ -d "$HOME/go" ]; then
-    SIZE=$(get_dir_size "$HOME/go")
-    echo -e "  ${YELLOW}!${NC} Found ~/go ($SIZE)"
-    echo "    Recommendation: Move to ~/code/go"
-    RECOMMENDATIONS+=("~/go|~/code/go|GOPATH=\$HOME/code/go")
 else
     echo "  - No Go workspace found"
 fi
@@ -102,10 +95,6 @@ if check_tool_installed node; then
     NPM_PREFIX=$(npm config get prefix 2>/dev/null || echo "")
     if [ -n "$NPM_PREFIX" ]; then
         echo "    - npm global prefix: $NPM_PREFIX"
-        if [[ "$NPM_PREFIX" != "$HOME/code/"* ]]; then
-            echo -e "    ${YELLOW}⚠${NC} Could be moved to ~/code/node for consistency"
-            RECOMMENDATIONS+=("$NPM_PREFIX|~/code/node|npm config set prefix ~/code/node")
-        fi
     fi
 
     if check_dir "$HOME/.npm"; then

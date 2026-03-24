@@ -1,0 +1,30 @@
+
+[0;34m?[0m Move ~/.pyenv to ~/code/python/pyenv?
+  (y/n): 
+----------------------------------------
+Moving: /Users/alyshialedlie/.pyenv
+To: /Users/alyshialedlie/code/python/pyenv
+----------------------------------------
+[0;32m✓[0m Created directory: /Users/alyshialedlie/code/python
+[0;32m✓[0m Moved successfully
+[0;32m✓[0m Added to ~/.zshrc: export PYENV_ROOT="$HOME/code/python/pyenv"
+[0;32m✓[0m Added to PATH: $PYENV_ROOT/bin
+
+[0;34m?[0m Move npm global prefix to ~/code/node?
+  (y/n): [0;32m✓[0m Updated npm global prefix
+[0;32m✓[0m Added ~/code/node/bin to PATH
+
+=========================================
+ORGANIZATION COMPLETE
+=========================================
+
+[0;32m✓[0m All requested moves completed!
+
+Next steps:
+  1. Open a new terminal OR run: source ~/.zshrc
+  2. Test your development tools to ensure they work
+  3. Check the log file: /Users/alyshialedlie/code/dev-env-org-log-20251022-233935.txt
+
+Your original shell config was backed up to:
+  /Users/alyshialedlie/.zshrc.backup-20251022-233935
+
